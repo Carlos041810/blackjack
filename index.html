@@ -13,19 +13,22 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            height: 100vh;
+            min-height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), 
                         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="felt" cx="50%" cy="50%"><stop offset="0%" style="stop-color:%23234f3f"/><stop offset="100%" style="stop-color:%231a3d2e"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23felt)"/><circle cx="200" cy="150" r="80" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><circle cx="1000" cy="200" r="60" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><circle cx="600" cy="600" r="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><path d="M 100 300 Q 300 250 500 300 T 900 300" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="3"/><path d="M 200 500 Q 400 450 600 500 T 1000 500" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="3"/></svg>');
             background-size: cover;
             background-position: center;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             color: white;
-            overflow: hidden;
+            overflow-y: auto; /* Habilita scroll vertical */
+            padding: 20px 0; /* espacio en pantallas pequeñas */
         }
 
         .login-container {
+            width: 90%;
+            max-width: 1000px;
             background: rgba(0,0,0,0.85);
             backdrop-filter: blur(10px);
             border-radius: 20px;
@@ -34,37 +37,19 @@
                         0 0 40px rgba(212, 175, 55, 0.2);
             border: 2px solid rgba(212, 175, 55, 0.3);
             text-align: center;
-            max-width: 1000px;
-            width: 90%;
             animation: fadeInUp 1s ease-out;
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .logo {
             margin-bottom: 30px;
         }
 
-        .logo h1 {
-            font-size: 48px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #d4af37, #ffd700, #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-        }
+   
 
         .logo .subtitle {
             font-size: 16px;
@@ -86,6 +71,7 @@
             gap: 40px;
             margin: 40px 0;
             justify-content: center;
+            flex-wrap: wrap; /* permite que las cards bajen en pantallas estrechas */
         }
 
         .option-card {
@@ -97,7 +83,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            flex: 1;
+            flex: 1 1 300px; /* crece y baja si es necesario */
             max-width: 400px;
             min-height: 300px;
             display: flex;
@@ -116,54 +102,16 @@
             transition: left 0.5s ease;
         }
 
-        .option-card:hover::before {
-            left: 100%;
-        }
-
+        .option-card:hover::before { left: 100%; }
         .option-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
             border-color: #d4af37;
         }
 
-        .option-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .dealer-card {
-            border-color: rgba(255, 215, 0, 0.4);
-        }
-
-        .dealer-card:hover {
-            border-color: #ffd700;
-            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.3);
-        }
-
-        .player-card {
-            border-color: rgba(76, 175, 80, 0.4);
-        }
-
-        .player-card:hover {
-            border-color: #4caf50;
-            box-shadow: 0 15px 40px rgba(76, 175, 80, 0.3);
-        }
-
-        .option-title {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .option-description {
-            font-size: 16px;
-            color: #bbb;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
-
+        .option-icon { font-size: 48px; margin-bottom: 20px; }
+        .option-title { font-size: 28px; font-weight: bold; margin-bottom: 15px; color: #fff; }
+        .option-description { font-size: 16px; color: #bbb; line-height: 1.5; margin-bottom: 20px; }
         .option-button {
             background: linear-gradient(45deg, #d4af37, #ffd700);
             color: #000;
@@ -177,20 +125,9 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        .option-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-        }
-
-        .dealer-card .option-button {
-            background: linear-gradient(45deg, #ffd700, #ffed4a);
-        }
-
-        .player-card .option-button {
-            background: linear-gradient(45deg, #4caf50, #66bb6a);
-            color: white;
-        }
+        .option-button:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); }
+        .dealer-card .option-button { background: linear-gradient(45deg, #ffd700, #ffed4a); }
+        .player-card .option-button { background: linear-gradient(45deg, #4caf50, #66bb6a); color: white; }
 
         .floating-cards {
             position: absolute;
@@ -200,54 +137,30 @@
             pointer-events: none;
         }
 
-        .card-1 {
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .card-2 {
-            top: 20%;
-            right: 15%;
-            animation-delay: 2s;
-        }
-
-        .card-3 {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 4s;
-        }
-
-        .card-4 {
-            bottom: 10%;
-            right: 10%;
-            animation-delay: 1s;
-        }
+        .card-1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .card-2 { top: 20%; right: 15%; animation-delay: 2s; }
+        .card-3 { bottom: 20%; left: 20%; animation-delay: 4s; }
+        .card-4 { bottom: 10%; right: 10%; animation-delay: 1s; }
 
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(5deg); }
         }
 
-        .footer-text {
-            margin-top: 30px;
-            font-size: 14px;
-            color: #888;
-            font-style: italic;
-        }
+        .footer-text { margin-top: 30px; font-size: 14px; color: #888; font-style: italic; }
 
-        /* Modal para código */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(0,0,0,0.9);
             z-index: 1000;
             justify-content: center;
             align-items: center;
+            overflow-y: auto; /* scroll si es necesario */
+            padding: 20px;
         }
 
         .modal-content {
@@ -257,15 +170,10 @@
             border: 2px solid rgba(76, 175, 80, 0.5);
             text-align: center;
             max-width: 400px;
-            width: 90%;
+            width: 100%;
         }
 
-        .modal h3 {
-            color: #4caf50;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
+        .modal h3 { color: #4caf50; margin-bottom: 20px; font-size: 24px; }
         .code-input {
             width: 100%;
             padding: 15px;
@@ -278,71 +186,29 @@
             margin: 20px 0;
             letter-spacing: 3px;
         }
+        .code-input:focus { outline: none; border-color: #4caf50; box-shadow: 0 0 20px rgba(76, 175, 80, 0.3); }
+        .modal-buttons { display: flex; gap: 15px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+        .modal-btn { padding: 12px 30px; border: none; border-radius: 10px; font-size: 16px; cursor: pointer; font-weight: bold; }
+        .join-btn { background: #4caf50; color: white; }
+        .cancel-btn { background: #666; color: white; }
 
-        .code-input:focus {
-            outline: none;
-            border-color: #4caf50;
-            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
-        }
-
-        .modal-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .modal-btn {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .join-btn {
-            background: #4caf50;
-            color: white;
-        }
-
-        .cancel-btn {
-            background: #666;
-            color: white;
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
-            .login-container {
-                padding: 30px 20px;
-                max-width: 90%;
-            }
-            
-            .logo h1 {
-                font-size: 36px;
-            }
-            
-            .welcome-message {
-                font-size: 18px;
-            }
-            
-            .options-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .option-card {
-                min-height: auto;
-                padding: 30px 20px;
-            }
-            
-            .option-title {
-                font-size: 22px;
-            }
+            .login-container { padding: 30px 20px; }
+            .logo h1 { font-size: 36px; }
+            .welcome-message { font-size: 18px; }
+            .options-container { flex-direction: column; gap: 20px; }
+            .option-card { padding: 30px 20px; min-height: auto; }
+            .option-title { font-size: 22px; }
+        }
+
+        @media (max-height: 700px) {
+            body { align-items: flex-start; }
         }
     </style>
 </head>
 <body>
-    <!-- Cartas flotantes decorativas -->
+    <!-- Cartas flotantes -->
     <div class="floating-cards card-1">♠</div>
     <div class="floating-cards card-2">♥</div>
     <div class="floating-cards card-3">♣</div>
@@ -350,7 +216,7 @@
 
     <div class="login-container">
         <div class="logo">
-            <h1>ROYAL BLACKJACK</h1>
+            
             <div class="subtitle">Premium Casino Experience</div>
         </div>
 
@@ -384,7 +250,7 @@
         </div>
     </div>
 
-    <!-- Modal para código de jugador -->
+    <!-- Modal -->
     <div class="modal" id="codeModal">
         <div class="modal-content">
             <h3>🃏 Código de Mesa</h3>
@@ -399,8 +265,6 @@
 
     <script>
         function enterAsDealer() {
-            // Aquí puedes redirigir a la página del dealer
-            
             window.location.href = 'blackjack-dealer/index.html';
         }
 
@@ -416,44 +280,24 @@
 
         function joinRoom() {
             const code = document.getElementById('roomCode').value;
-            
-            if (code.length !== 6) {
-                alert('Por favor ingresa un código de 6 dígitos');
-                return;
-            }
-            
-            if (!/^\d{6}$/.test(code)) {
-                alert('El código debe contener solo números');
-                return;
-            }
-
-            // Aquí puedes validar el código y redirigir
+            if (code.length !== 6) { alert('Por favor ingresa un código de 6 dígitos'); return; }
+            if (!/^\d{6}$/.test(code)) { alert('El código debe contener solo números'); return; }
             window.location.href = `../blackjack-players/index.html`;
             closeModal();
-            
-
         }
 
-        // Permitir envío con Enter en el campo de código
         document.getElementById('roomCode').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                joinRoom();
-            }
+            if (e.key === 'Enter') joinRoom();
         });
 
-        // Solo permitir números en el campo de código
         document.getElementById('roomCode').addEventListener('input', function(e) {
             this.value = this.value.replace(/\D/g, '');
         });
 
-        // Cerrar modal al hacer clic fuera de él
         document.getElementById('codeModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
+            if (e.target === this) closeModal();
         });
 
-        // Animación de entrada
         window.addEventListener('load', function() {
             document.querySelector('.login-container').style.animation = 'fadeInUp 1s ease-out';
         });
