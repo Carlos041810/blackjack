@@ -145,8 +145,8 @@
            ========================= */
         .svg-container {
             order: 2;
-            margin: 2
-            0px 0;
+            margin: 2 0px 0;
+
         }
 
         text {
@@ -162,7 +162,7 @@
             display: flex;
             justify-content: center;
             order: 3;
-            
+
         }
 
         .player-cards {
@@ -443,30 +443,68 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
+
             .invite-section,
             .desktop-only {
-                display: none; /* ocultamos estos en móvil */
+                display: none;
+                /* ocultamos estos en móvil */
             }
 
             .menu-toggle {
-                display: block; /* mostramos hamburguesa */
+                display: block;
+                /* mostramos hamburguesa */
             }
         }
 
         @media (max-width: 1220px) {
             .player-cards {
-                gap: 150px; /* menos separación */
+                gap: 150px;
+                /* menos separación */
+            }
+
+            .player-area {
+                order: 2;
+                margin-top: -70px;
             }
         }
 
         @media (max-width: 720px) {
             .player-cards {
-                gap: 70px; /* menos separación entre jugadores */
+                gap: 70px;
+                /* menos separación entre jugadores */
+            }
+
+            .player-area {
+                order: 2;
+                margin-top: -50px;
+
+            }
+
+            .dealer-area {
+                text-align: center;
+                order: 1;
+                margin-bottom: -30px;
             }
         }
 
+
         @media (max-width: 568px) {
             .player-cards {
-                gap: 30px; /* menos separación entre jugadores */
+                gap: 30px;
+                /* menos separación entre jugadores */
             }
+
+            .player-area {
+                order: 2;
+                margin-top: -90px;
+            }
+
+            .dealer-area {
+                text-align: center;
+                order: 1;
+                margin-bottom: -80px;
+            }
+
+
+
         }
