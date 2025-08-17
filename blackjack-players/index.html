@@ -41,11 +41,12 @@
 
     <!-- SIDEBAR -->
     <div class="sidebar">
-        <button class="sidebar-btn">👤</button>
-        <button class="sidebar-btn">👤</button>
-        <button class="sidebar-btn">👤</button>
+        <div class="online-status">
+            <div class="status-icon"></div>
+            <span class="user-icon">👥</span>
+            <span>4 online</span>
+        </div>
     </div>
-
     <!-- ÁREA DE JUEGO PRINCIPAL -->
     <div class="game-area">
         <!-- ÁREA DEL DEALER (ARRIBA) -->
@@ -67,12 +68,16 @@
         </div>
 
         <!-- SVG DECORATIVO (CENTRO) -->
+
+        <!-- SVG DECORATIVO (CENTRO) -->
         <div class="svg-container">
             <svg viewBox="0 0 1000 400" style="width: 100%; height: 300px;">
                 <defs>
-                    <!-- Curvas -->
-                    <path id="curve-top" d="M 150 150 Q 500 80 850 150" />
-                    <path id="curve-bottom" d="M 150 200 Q 500 130 850 200" />
+                    <!-- Curvas alineadas -->
+                    <path id="curve-top" d="M 150 150 Q 500 220 850 150" />
+                    <path id="curve-bottom" d="M 150 200 Q 500 270 850 200" />
+                  <path id="curve-middle" d="M 130 208 Q 500 278 870 208" />
+
 
                     <!-- Efectos de sombra -->
                     <filter id="shadow">
@@ -80,9 +85,8 @@
                     </filter>
                 </defs>
 
-                <!-- Línea decorativa visible -->
-                <path d="M 150 250 Q 500 180 850 250" stroke="#D4AF37" stroke-width="4" fill="none"
-                    filter="url(#shadow)" />
+                <!-- Línea decorativa visible que sigue la curva del texto -->
+                <use href="#curve-middle" stroke="#D4AF37" stroke-width="4" fill="none" filter="url(#shadow)" />
 
                 <!-- Texto superior -->
                 <text font-family="Times New Roman, serif" font-weight="bold" fill="#D4AF37" font-size="56"
@@ -101,7 +105,6 @@
                 </text>
             </svg>
         </div>
-
         <!-- ÁREA DEL JUGADOR (ABAJO) -->
         <div class="player-area">
             <div class="player-cards" id="playerCards">
